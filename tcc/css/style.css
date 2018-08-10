@@ -1,0 +1,29 @@
+    #abas{
+        margin-top: 100px;
+        margin-left: 560px;
+
+    }
+
+    #abas ul{
+        display: inline;
+    }
+
+    #abas ul li{
+        display: inline-block;
+        border: solid 1px #8e0000;
+        padding: 10px 10px 5px;
+        border-radius: 10px 10px 0 0;
+    }
+
+    #conteudos{
+        border: solid 1px black;
+        margin-left: 600px;
+        margin-right: 800px;
+        text-align: center;
+    }
+
+    .selecionado{
+        background-color: #8e0000;
+        box-shadow: 2px 2px 3px #670000;
+    }
+
