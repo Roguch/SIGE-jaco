@@ -19,7 +19,7 @@ class CrudUser
         $listaUsers = [];
 
         foreach ($cad_user as $user) {
-            $listaUsers[] = new Cad_user($user['cpf'], $user['nome'], $user['data_nasc'], $user['ocupacao'], $user['sexo'], $user['usuario'], $user['senha']);
+            $listaUsers[] = new Cad_user($user['cpf'], $user['nome'], $user['data_nasc'], $user['ocupacao'], $user['sexo'], $user['usuario'], $user['senha'],$user['tipo_id']);
         }
 
 
@@ -35,7 +35,7 @@ class CrudUser
         $resultado = $this->conexao->query($sql);
         $user = $resultado->fetch(PDO::FETCH_ASSOC);
 
-        $Users[] = new Cad_user($user['cpf'], $user['nome'], $user['data_nasc'], $user['ocupacao'], $user['sexo'], $user['usuario'], $user['senha']);
+        $Users[] = new Cad_user($user['cpf'], $user['nome'], $user['data_nasc'], $user['ocupacao'], $user['sexo'], $user['usuario'], $user['senha'],$user['tipo_id']);
 
         return $user;
     }
@@ -46,8 +46,7 @@ class CrudUser
         $this->conexao = DBConnection::getConexao();
 
         //inserir dado
-        $sql = "insert into user (cpf,nome,data_nasc,ocupacao,sexo,usuario,senha) values ('{$user->getCpf()}','{$user->getNome()}','{$user->getData()}','{$user->getOcupacao()}','{$user->getSexo()}','{$user->getUsuario()}','{$user->getSenha()}')";
-
+        $sql = "insert into user (cpf,nome,data_nasc,ocupacao,sexo,usuario,senha,tipo_id) values ({$user->getCpf()},'{$user->getNome()}','{$user->getData()}','{$user->getOcupacao()}','{$user->getSexo()}','{$user->getUsuario()}','{$user->getSenha()}',1)";
         //erro
         try {
             $this->conexao->exec($sql);
@@ -88,12 +87,8 @@ class CrudUser
         if ($usuario == null){
             return null;
         }else{
-            return true;
+            return $usuario['tipo_id'];
         }
 
     }
 }
-
-//$user = new Cad_user('1242444','heitor','2000-04-06');
-//$crud = new CrudUser();
-//$crud->insertUser($user);

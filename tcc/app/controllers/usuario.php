@@ -19,13 +19,23 @@ switch ($acao){
     case 'logar':
         if (isset($_POST['entrar'])){
             $resutado = $crud->acharUser($_POST['login'],$_POST['senha']);
-            if ($resutado == true){
-            $materiais = $materiaisCrud->getMateriais();
-            include '../views/blz.php';
+            if ($resutado != null){
+                if ($resutado == 0) {
+                    include '../views/admin.php';
+                }else{
+                    $materiais = $materiaisCrud->getMateriais();
+                    include '../views/blz.php';
+                }
             }else{
                 echo"<script language='javascript' type='text/javascript'>alert('Login e/ou senha incorretos');window.location.href='../../index.php';               </script>";
                 die();
             }
         }break;
+    case 'inserir':
+        if (isset($_POST['cadastrar'])){
+            $material = new Material($_POST['nome'],$_POST['descricao'],$_POST['especificacao'],$_POST['historico'],$_POST['qtd']);
+            $materiaisCrud->insertUser($material);
+                include '../views/admin.php';
+        }
 }
 

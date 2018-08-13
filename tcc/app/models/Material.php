@@ -2,15 +2,14 @@
 
 class Material
 {
-    private $idnum;
+
     private $nome;
     private $descricao;
     private $especificacao;
     private $historico;
     private $qtd;
 
-    public function __construct($idnum=null, $nome=null, $descricao=null, $especificacao=null, $historico=null, $qtd=null){
-        $this->idnum = $idnum;
+    public function __construct($nome=null, $descricao=null, $especificacao=null, $historico=null, $qtd=null){
         $this->nome = $nome;
         $this->descricao = $descricao;
         $this->especificacao = $especificacao;
@@ -18,8 +17,6 @@ class Material
         $this->qtd = $qtd;
     }
 
-    public function getIdnum(){return $this->idnum;}
-    public function setIdnum($idnum): void{$this->idnum = $idnum;}
 
     public function getNome(){return $this->nome;}
     public function setNome($nome): void{$this->nome = $nome;}

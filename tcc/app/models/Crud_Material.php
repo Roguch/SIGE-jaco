@@ -33,5 +33,14 @@ class Crud_Material
 
         return $mat;
     }
+    public function insertUser(Material $mat){
+        $this->conexao = DBConnection::getConexao();
+        $sql = "insert into emprestimo(nome,descricao,especificao,historico,qtd) values ('{$mat->getNome()}','{$mat->getDescricao()}','{$mat->getEspecificacao()}','{$mat->getHistorico()}','{$mat->getQtd()}')";
 
+        try {
+            $this->conexao->exec($sql);
+        } catch (PDOException $e) {
+            return $e->getMessage();
+        }
+    }
 }
